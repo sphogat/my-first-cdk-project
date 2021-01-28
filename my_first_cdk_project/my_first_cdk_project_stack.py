@@ -16,3 +16,4 @@ class MyFirstCdkProjectStack(core.Stack):
             bucket_name="myfirstcdkproject112344"  
             
         )
+        
