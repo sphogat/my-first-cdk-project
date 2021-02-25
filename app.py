@@ -2,10 +2,10 @@
 
 from aws_cdk import core
 
-from my_first_cdk_project.my_first_cdk_project_stack import MyFirstCdkProjectStack
-
+from resource_stacks.custom_vpc import CustomVpcStack
 
 app = core.App()
-MyFirstCdkProjectStack(app, "my-first-cdk-project")
+
+CustomVpcStack(app, "my-custom-vpc-stack")
 
 app.synth()
