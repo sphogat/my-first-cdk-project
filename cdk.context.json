@@ -1,0 +1,71 @@
+{
+  "availability-zones:account=921537816184:region=us-east-1": [
+    "us-east-1a",
+    "us-east-1b",
+    "us-east-1c",
+    "us-east-1d",
+    "us-east-1e",
+    "us-east-1f"
+  ],
+  "vpc-provider:account=921537816184:filter.vpc-id=vpc-075f2b1d914972a82:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-075f2b1d914972a82",
+    "vpcCidrBlock": "10.83.0.0/20",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "publicSubnet",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0483be1a167b0946a",
+            "cidr": "10.83.0.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0aad6e146aeda352a"
+          },
+          {
+            "subnetId": "subnet-08ee63c1d0595d856",
+            "cidr": "10.83.1.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-03b02de55f27f86a8"
+          }
+        ]
+      },
+      {
+        "name": "privateSubnet",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-02a18f4d763c0d293",
+            "cidr": "10.83.2.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-08d95d215b258160b"
+          },
+          {
+            "subnetId": "subnet-0d4e3494df98b18d6",
+            "cidr": "10.83.3.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0a4a30cc7024a9877"
+          }
+        ]
+      },
+      {
+        "name": "dbSubnet",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-0cc27eb6ff538ba00",
+            "cidr": "10.83.4.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-00d4e70d466754226"
+          },
+          {
+            "subnetId": "subnet-02e943932409c260f",
+            "cidr": "10.83.5.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-09b285648781442a6"
+          }
+        ]
+      }
+    ]
+  }
+}

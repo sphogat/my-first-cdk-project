@@ -1,6 +1,6 @@
 from aws_cdk import aws_ec2 as _ec2
 from aws_cdk import core
-
+from aws_cdk import aws_s3 as _s3
 
 class CustomVpcStack(core.Stack):
 
@@ -23,15 +23,38 @@ class CustomVpcStack(core.Stack):
                     name="privateSubnet", cidr_mask=prod_configs['vpc_configs']['cidr_mask'], subnet_type=_ec2.SubnetType.PRIVATE
                 ),
                 _ec2.SubnetConfiguration(
-                    name="isolatedSubnet", cidr_mask=prod_configs['vpc_configs']['cidr_mask'], subnet_type=_ec2.SubnetType.ISOLATED
+                    name="dbSubnet", cidr_mask=prod_configs['vpc_configs']['cidr_mask'], subnet_type=_ec2.SubnetType.ISOLATED
                 ),
             ]
         )
+
+
+        core.Tag.add(custom_vpc, "Owner", "Shivang")
 
         core.CfnOutput(self,
         "customVpcOutput",
         value=custom_vpc.vpc_id,
         export_name="customVpcId"
         )
+
+        my_bkt = _s3.Bucket(
+            self,
+            "myBucketID",
+            encryption = _s3.BucketEncryption.KMS,
+            block_public_access=_s3.BlockPublicAccess.BLOCK_ALL
+        )
+
+        core.Tag.add(my_bkt, "Owner", "Shivang")
+
+        # Resource in the same account
+        bkt1=_s3.Bucket.from_bucket_name(
+            self,
+            "MyImportedBucket",
+            "my-custom-vpc-stack-mybucketidc04e027a-11468mzbt9pj2"
+        )
+
+        core.CfnOutput(self,
+        "myimportedbucket",
+        value=bkt1.bucket_name)
 
         
